@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    <button onclick="main()">Track Ball</button>
+    <hr>
     <canvas id="canvas" width="300" height="300" style="border:1px solid red;"></canvas>
     <script>
         function animatePathDrawing(ctx, x0, y0, x1, y1, x2, y2, duration) {
@@ -34,19 +36,6 @@
             window.requestAnimationFrame(step);
         }
 
-        /**
-         * Draws a splitted bezier-curve
-         * 
-         * @param ctx       The canvas context to draw to
-         * @param x0        The x-coord of the start point
-         * @param y0        The y-coord of the start point
-         * @param x1        The x-coord of the control point
-         * @param y1        The y-coord of the control point
-         * @param x2        The x-coord of the end point
-         * @param y2        The y-coord of the end point
-         * @param t0        The start ratio of the splitted bezier from 0.0 to 1.0
-         * @param t1        The start ratio of the splitted bezier from 0.0 to 1.0
-         */
         function drawBezierSplit(ctx, x0, y0, x1, y1, x2, y2, t0, t1) {
             ctx.beginPath();
             ctx.lineWidth = 3;
@@ -85,9 +74,6 @@
             ctx.closePath();
         }
 
-        /**
-         * Linearly interpolates between two numbers
-         */
         function lerp(v0, v1, t) {
             return (1.0 - t) * v0 + t * v1;
         }
@@ -115,20 +101,14 @@
         var background = new Image();
         background.src = "./lbw.png";
 
-        // Make sure the image is loaded first otherwise nothing will draw.
         background.onload = function () {
             ctx.drawImage(background, 0, 0);
         }
-
-        animatePathDrawing(ctx, 
-        90, // x start
-        145, // y  start
-        130, // control point x
-        140, // control point y
-        135, // end point x
-        175, // end point y
-        1300
-        );
+        
+        function main(){
+            //x start,y start,control point x,control point y,end point x,end point y
+            animatePathDrawing(ctx,90,145,130,140,135,175,1300);
+        }
     </script>
 </body>
 
