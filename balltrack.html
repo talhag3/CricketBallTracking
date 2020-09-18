@@ -79,7 +79,16 @@
         }
 
         function drawLine(x1,y1,x2,y2,ratio) {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.drawImage(background, 0, 0);
+            
+            var grd = ctx.createLinearGradient(0, 0, 200, 0);
+            grd.addColorStop(0, "red");
+            grd.addColorStop(1, "white");
+
             ctx.moveTo(x1,y1);
+            ctx.lineJoin = 'round';
+	        ctx.lineCap = 'round';
             x2 = x1 + ratio * (x2-x1);
             y2 = y1 + ratio * (y2-y1);
             ctx.lineTo(x2,y2);
